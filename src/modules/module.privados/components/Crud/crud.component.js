@@ -3,6 +3,8 @@ import { useStyles } from './material.styles'
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+import SaveIcon from '@material-ui/icons/Save';
+import Button from '@material-ui/core/Button';
 
 const CRUDPrivados = props => {
   const classes = useStyles();
@@ -40,6 +42,12 @@ const CRUDPrivados = props => {
             <h3>Datos del Grupo</h3>
             <form className={classes.rootTxt} noValidate autoComplete="off">
               <TextField required id="standard-required" label="Grupo" helperText="Nombre del grupo a asignar" />
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                startIcon={<SaveIcon />}
+              >Save</Button>
             </form>
           </Paper>
         </Grid>
