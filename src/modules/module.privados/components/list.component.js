@@ -7,3 +7,5 @@ const ListPrivados = props =>{
         </div>
     );
 }
+
+export default ListPrivados;

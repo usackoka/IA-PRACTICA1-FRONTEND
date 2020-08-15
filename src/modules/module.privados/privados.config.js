@@ -6,7 +6,7 @@ const LISTComponent = React.lazy(() => import('./components/list.component'))
 export const privadosConfig = {
     routes: [
         {
-            path: '/list',
+            path: '/',
             render: () => <LISTComponent/>,
             exact: true,
         },

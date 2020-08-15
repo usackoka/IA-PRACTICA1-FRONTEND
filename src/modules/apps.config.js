@@ -1,5 +1,7 @@
 import { privadosConfig } from './module.privados/privados.config'
 
-export default appsConfig = [
+const appsConfig = [
     privadosConfig,
 ];
+
+export default appsConfig;

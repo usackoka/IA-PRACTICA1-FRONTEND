@@ -7,3 +7,5 @@ const CRUDPrivados = props =>{
         </div>
     );
 }
+
+export default CRUDPrivados;
