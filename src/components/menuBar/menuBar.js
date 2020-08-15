@@ -1,23 +1,20 @@
-import React from 'react'
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
-
+import { MenuBook as MenuBookIcon, Menu as MenuIcon, SupervisedUserCircle as SupervisedUserCircleIcon } from '@material-ui/icons';
 import { StyledMenu, StyledMenuItem, useStyles } from './material.styles'
+import { useHistory } from 'react-router-dom';
 
 const MenuBar = props => {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const classes = useStyles();
+    const history = useHistory()
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -27,12 +24,17 @@ const MenuBar = props => {
         setAnchorEl(null);
     };
 
+    const goTo = (path) => {
+        if(history.location.pathname!==path) history.push(path)
+        handleClose()
+    }
+
     return (
         <div className={classes.root}>
             <AppBar position="static">
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <MenuIcon onClick={handleClick} />
+                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={handleClick} >
+                        <MenuIcon />
                     </IconButton>
                     <StyledMenu
                         id="customized-menu"
@@ -41,28 +43,21 @@ const MenuBar = props => {
                         open={Boolean(anchorEl)}
                         onClose={handleClose}
                     >
-                        <StyledMenuItem>
+                        <StyledMenuItem onClick={() => { goTo('/') }}>
                             <ListItemIcon>
-                                <SendIcon fontSize="small" />
+                                <MenuBookIcon fontSize="small" />
                             </ListItemIcon>
-                            <ListItemText primary="Sent mail" />
+                            <ListItemText primary="Consultas" />
                         </StyledMenuItem>
-                        <StyledMenuItem>
+                        <StyledMenuItem onClick={() => { goTo('/crud') }}>
                             <ListItemIcon>
-                                <DraftsIcon fontSize="small" />
+                                <SupervisedUserCircleIcon fontSize="small" />
                             </ListItemIcon>
-                            <ListItemText primary="Drafts" />
-                        </StyledMenuItem>
-                        <StyledMenuItem>
-                            <ListItemIcon>
-                                <InboxIcon fontSize="small" />
-                            </ListItemIcon>
-                            <ListItemText primary="Inbox" />
+                            <ListItemText primary="Administración" />
                         </StyledMenuItem>
                     </StyledMenu>
-
                     <Typography variant="h6" className={classes.title}>Menu</Typography>
-                    <Button color="inherit">HOME</Button>
+                    <Button color="inherit" onClick={()=>{goTo('/')}}>HOME</Button>
                 </Toolbar>
             </AppBar>
         </div>
