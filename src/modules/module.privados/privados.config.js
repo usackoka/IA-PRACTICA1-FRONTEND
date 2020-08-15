@@ -1,7 +1,7 @@
 import React from 'react';
 
-const CRUDComponent = React.lazy(() => import('./components/crud.component'))
-const LISTComponent = React.lazy(() => import('./components/list.component'))
+const CRUDComponent = React.lazy(() => import('./components/Crud/crud.component'))
+const LISTComponent = React.lazy(() => import('./components/List/list.component'))
 
 export const privadosConfig = {
     routes: [
