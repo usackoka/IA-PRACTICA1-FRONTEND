@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -17,10 +17,13 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Search as SearchIcon, GroupAdd as GroupAddIcon, Help as HelpIcon } from '@material-ui/icons';
 import { useStyles } from './material.styles'
+import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 const MenuBar = props => {
   const classes = useStyles();
   const theme = useTheme();
+  const history = useHistory()
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -30,6 +33,22 @@ const MenuBar = props => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const goTo = path => {
+    history.push(path)
+  }
+
+  const showInfo = () => {
+    Swal.fire({
+      title: "Acerca de",
+      html:
+        "Práctica 1 del curso Inteligencia Artificial 1<br/><br/>Oscar René Cuéllar Mancilla - 201503712"+
+        "<br/>David Andrés Alcázar Escobar - 201504480",
+      icon: "info",
+      confirmButtonColor: "#3085d6",
+      confirmButtonText: "Ok!",
+    })
+  }
 
   return (
     <div className={classes.root}>
@@ -77,18 +96,18 @@ const MenuBar = props => {
         </div>
         <Divider />
         <List>
-          <ListItem button key={0} >
+          <ListItem button key={0} onClick={()=>{goTo('/')}}>
             <ListItemIcon><SearchIcon /></ListItemIcon>
             <ListItemText primary={"Consultas"} />
           </ListItem>
-          <ListItem button key={1}>
+          <ListItem button key={1} onClick={()=>{goTo('/crud')}}>
             <ListItemIcon><GroupAddIcon /></ListItemIcon>
             <ListItemText primary={"Registrar Privado"} />
           </ListItem>
         </List>
         <Divider />
         <List>
-          <ListItem button key={2}>
+          <ListItem button key={2} onClick={showInfo}>
             <ListItemIcon><HelpIcon /></ListItemIcon>
             <ListItemText primary={"Acerca de"} />
           </ListItem>
