@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { useTheme } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -53,7 +53,7 @@ const MenuBar = props => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            PRACTICA 1 - INTELIGENCIA ARTIFICIAL - UNIVERSIDAD DE SAN CARLOS DE GUATEMALA
+            Practica 1 Inteligencia Artificial - 201503712 / 201504480
           </Typography>
         </Toolbar>
       </AppBar>
@@ -77,23 +77,27 @@ const MenuBar = props => {
         </div>
         <Divider />
         <List>
-            <ListItem button key={0}>
-                <ListItemIcon><SearchIcon/></ListItemIcon>
-                <ListItemText primary={"Consultas"} />
-            </ListItem>
-            <ListItem button key={1}>
-                <ListItemIcon><GroupAddIcon/></ListItemIcon>
-                <ListItemText primary={"Registrar Privado"} />
-            </ListItem>
+          <ListItem button key={0} >
+            <ListItemIcon><SearchIcon /></ListItemIcon>
+            <ListItemText primary={"Consultas"} />
+          </ListItem>
+          <ListItem button key={1}>
+            <ListItemIcon><GroupAddIcon /></ListItemIcon>
+            <ListItemText primary={"Registrar Privado"} />
+          </ListItem>
         </List>
         <Divider />
         <List>
-            <ListItem button key={2}>
-                <ListItemIcon><HelpIcon/></ListItemIcon>
-                <ListItemText primary={"Acerca de"} />
-            </ListItem>
+          <ListItem button key={2}>
+            <ListItemIcon><HelpIcon /></ListItemIcon>
+            <ListItemText primary={"Acerca de"} />
+          </ListItem>
         </List>
       </Drawer>
+      <main className={classes.content}>
+        <div className={classes.toolbar} />
+        {props.children}
+      </main>
     </div>
   );
 }

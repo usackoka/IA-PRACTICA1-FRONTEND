@@ -4,14 +4,14 @@ import { MenuBar, PageNotFound } from '../components'
 import routes from '../system-config/routes.config'
 
 const DefaultLayout = props => {
+
     return (
         <div>
-            <MenuBar/>
-            <div>
+            <MenuBar children={
                 <React.Suspense fallback={<div>loading...</div>}>
                     <Switch>
                         {
-                            routes.map((value,key)=>(
+                            routes.map((value, key) => (
                                 <Route
                                     key={key}
                                     path={value.path}
@@ -21,12 +21,12 @@ const DefaultLayout = props => {
                             ))
                         }
                         <Route
-                            key={routes.length+1}
+                            key={routes.length + 1}
                             component={PageNotFound}
                         />
                     </Switch>
                 </React.Suspense>
-            </div>
+            }/>
         </div>
     );
 }
