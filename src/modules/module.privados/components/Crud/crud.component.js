@@ -6,9 +6,15 @@ import Grid from '@material-ui/core/Grid';
 import SaveIcon from '@material-ui/icons/Save';
 import Tooltip from '@material-ui/core/Tooltip';
 import Fab from '@material-ui/core/Fab';
+import {db} from './../../../../firebase'
 
 const CRUDPrivados = props => {
   const classes = useStyles();
+
+  const handleSubmit = async () => {
+    await db.collection('test').doc().set({name:'test',age:'0'})
+    console.log("guardado")
+  }
 
   return (
     <div className={classes.root}>
@@ -47,7 +53,7 @@ const CRUDPrivados = props => {
           </Paper>
         </Grid>
       </Grid>
-      <Tooltip title="Guardar" placement="right-end">
+      <Tooltip title="Guardar" placement="right-end" onClick={handleSubmit}>
         <Fab color="secondary" className={classes.absolute}>
           <SaveIcon />
         </Fab>
