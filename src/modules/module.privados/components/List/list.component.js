@@ -30,7 +30,7 @@ const ListPrivados = props =>{
 
       useEffect(()=>{
         getPrivados()
-      },[])
+      })
     
       return (
         <MaterialTable
