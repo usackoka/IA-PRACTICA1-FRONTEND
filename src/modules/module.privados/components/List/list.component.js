@@ -11,7 +11,7 @@ const ListPrivados = props => {
     grupo: ""
   })
   const [busqueda2, setBusqueda2] = useState({
-    carnet: 0,
+    carnet: "",
     year: "",
     semestre: ""
   })
@@ -83,9 +83,10 @@ const ListPrivados = props => {
     try {
       carnet = parseInt(busqueda2.carnet)
     } catch (error) {
+      console.log("error al parsear int: "+error)
     }
     db.collection('Solicitudes')
-    .where("carnet", "==", carnet)
+    .where("carnet", "==", busqueda2.carnet)
     .where("semestre", "==", busqueda2.semestre)
     .where("year", "==", busqueda2.year)
     .get()

@@ -15,7 +15,7 @@ const CRUDPrivados = props => {
     nombre:"",
     cui:"",
     correo:"",
-    carnet:0,
+    carnet:"",
     grupo:"",
     semestre:"",
     year:"2020"
@@ -27,7 +27,7 @@ const CRUDPrivados = props => {
 
   const handleSubmit = async () => {
 
-    if(data.carnet===0 && data.nombre==="" && data.cui===""){
+    if(data.carnet==="" && data.nombre==="" && data.cui===""){
       const Toast = Swal.mixin({
         toast: true,
         position: 'bottom-end',
