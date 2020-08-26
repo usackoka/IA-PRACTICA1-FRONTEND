@@ -28,7 +28,7 @@ const ListPrivados = props => {
     data: [],
   });
 
-  const msg = async = () => {
+  const msg = async () => {
     Swal.fire({
       icon: 'success',
       title:"Busqueda finalizada!",
