@@ -3,6 +3,7 @@ import MaterialTable from 'material-table';
 import { db } from './../../../../firebase'
 import { useStyles } from './../Crud/material.styles'
 import { Grid, Paper, Button, TextField } from '@material-ui/core';
+import Swal from 'sweetalert2';
 
 const ListPrivados = props => {
   const classes = useStyles();
@@ -27,6 +28,14 @@ const ListPrivados = props => {
     data: [],
   });
 
+  const msg = async = () => {
+    Swal.fire({
+      icon: 'success',
+      title:"Busqueda finalizada!",
+      text:"Continuar..."
+    })
+  }
+
   const getPrivados = async () => {
     db.collection('Solicitudes').onSnapshot((querySnapshot) => {
       let list = []
@@ -48,10 +57,12 @@ const ListPrivados = props => {
   }
 
   const handleClick = async e => {
+    msg();
     getPrivados()
   }
 
   const handleClickB1 = async e => {
+    msg();
     db.collection('Solicitudes')
     .where("grupo", "==", busqueda1.grupo)
     .get()
@@ -67,6 +78,7 @@ const ListPrivados = props => {
   }
 
   const handleClickB2 = async e => {
+    msg();
     let carnet = 0;
     try {
       carnet = parseInt(busqueda2.carnet)
